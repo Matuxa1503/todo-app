@@ -1,16 +1,15 @@
-import { NotebookPen } from 'lucide-react';
 import { FC } from 'react';
-import { CalendarTask } from '../../../components/CalendarTask/CalendarTask';
-import s from './CalendarSection.module.scss';
+import { NotebookPen } from 'lucide-react';
+import s from './Header.module.scss';
 
-interface CalendarSectionProps {
+interface HeaderProps {
   active: 'left' | 'right';
   isActive: (val: 'left' | 'right') => void;
 }
 
-export const CalendarSection: FC<CalendarSectionProps> = ({ active, isActive }) => {
+export const Header: FC<HeaderProps> = ({ active, isActive }) => {
   return (
-    <div className={s.blockCalendar}>
+    <div className={s.header}>
       <div className={s.blockTitle}>
         <NotebookPen color="#6969d4" width={40} height={40} />
         <h1 className={s.title}>Todo Tasks</h1>
@@ -23,7 +22,6 @@ export const CalendarSection: FC<CalendarSectionProps> = ({ active, isActive }) 
           Daily
         </button>
       </div>
-      <CalendarTask />
     </div>
   );
 };
