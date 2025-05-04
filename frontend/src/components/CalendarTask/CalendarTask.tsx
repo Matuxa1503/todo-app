@@ -1,0 +1,14 @@
+import { FC, useState } from 'react';
+import Calendar from 'react-calendar';
+import './CalendarTask.scss';
+
+type ValuePiece = Date | null;
+
+type Value = ValuePiece | [ValuePiece, ValuePiece];
+
+export const CalendarTask: FC = () => {
+  const [value, setValue] = useState<Value>(new Date());
+  console.log(value);
+
+  return <Calendar locale="en-UK" value={value} onChange={setValue} />;
+};
