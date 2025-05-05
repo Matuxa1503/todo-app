@@ -1,4 +1,7 @@
+// for add svg
+/// <reference types="vite-plugin-svgr/client" />
 import { FC } from 'react';
+import UnfulfilledTick from '@/assets/icons/unfulfilledTick.svg?react';
 import s from './TasksList.module.scss';
 
 export const TasksList: FC = () => {
@@ -6,17 +9,14 @@ export const TasksList: FC = () => {
     <div className={s.blockTasks}>
       <h2 className={s.subtitle}>This month</h2>
       <div className={s.plate}>
-        <svg className={s.icon} xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 40 40">
-          <path fill="none" d="M20,38.5C9.8,38.5,1.5,30.2,1.5,20S9.8,1.5,20,1.5S38.5,9.8,38.5,20S30.2,38.5,20,38.5z"></path>
-          <path
-            fill="#B1B1B1"
-            d="M20,2c9.9,0,18,8.1,18,18s-8.1,18-18,18S2,29.9,2,20S10.1,2,20,2 M20,1C9.5,1,1,9.5,1,20s8.5,19,19,19	s19-8.5,19-19S30.5,1,20,1L20,1z"
-          ></path>
-          <path fill="none" stroke="#B1B1B1" strokeMiterlimit="10" strokeWidth="3" d="M11.2,20.1l5.8,5.8l13.2-13.2"></path>
-        </svg>
-        <div className={s.taskTitle}>Сходить в душ</div>
-        <div className={s.date}>3 Feb</div> {/* первые 3 буквы показывать */}
-        <div className={s.time}>12:00</div>
+        <div className={s.block}>
+          <UnfulfilledTick width={30} height={30} />
+          <div className={s.taskTitle}>Сходить в душ</div>
+        </div>
+        <div className={s.block}>
+          <div className={s.date}>3 Feb</div> {/* первые 3 буквы показывать */}
+          <div className={s.time}>12:00</div>
+        </div>
       </div>
     </div>
   );

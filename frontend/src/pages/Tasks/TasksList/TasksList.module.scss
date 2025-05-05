@@ -17,5 +17,15 @@
     background-color: #fff;
     padding: 10px 25px;
     border-radius: 15px;
+
+    .taskTitle {
+      font-weight: 700;
+    }
+
+    .block {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
   }
 }
