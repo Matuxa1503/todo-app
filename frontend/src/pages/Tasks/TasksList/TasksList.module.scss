@@ -10,22 +10,9 @@
     margin: 20px 0;
   }
 
-  .plate {
+  .blockPlates {
     display: flex;
-    align-items: center;
-    justify-content: space-around;
-    background-color: #fff;
-    padding: 10px 25px;
-    border-radius: 15px;
-
-    .taskTitle {
-      font-weight: 700;
-    }
-
-    .block {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
+    flex-direction: column;
+    gap: 20px;
   }
 }
