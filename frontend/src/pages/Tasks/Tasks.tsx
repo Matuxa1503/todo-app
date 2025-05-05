@@ -14,7 +14,7 @@ export const Tasks: FC = () => {
         <Header active={active} isActive={isActive} />
         <AnimatePresence mode="wait">
           {active === 'left' && (
-            <Animation direction={'left'}>
+            <Animation key="left" direction="left">
               <div className={s.panel}>+</div>
               <div className={s.calendar}>
                 <CalendarTask />
@@ -23,7 +23,7 @@ export const Tasks: FC = () => {
             </Animation>
           )}
           {active === 'right' && (
-            <Animation direction={'right'}>
+            <Animation key="right" direction={'right'}>
               <h1>Right BLock</h1>
               <p>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium rem a optio repellendus cupiditate dolores sed facere
