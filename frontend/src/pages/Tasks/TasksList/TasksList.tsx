@@ -12,7 +12,7 @@ export const TasksList: FC = () => {
             fill="#B1B1B1"
             d="M20,2c9.9,0,18,8.1,18,18s-8.1,18-18,18S2,29.9,2,20S10.1,2,20,2 M20,1C9.5,1,1,9.5,1,20s8.5,19,19,19	s19-8.5,19-19S30.5,1,20,1L20,1z"
           ></path>
-          <path fill="none" stroke="#B1B1B1" stroke-miterlimit="10" stroke-width="3" d="M11.2,20.1l5.8,5.8l13.2-13.2"></path>
+          <path fill="none" stroke="#B1B1B1" strokeMiterlimit="10" strokeWidth="3" d="M11.2,20.1l5.8,5.8l13.2-13.2"></path>
         </svg>
         <div className={s.taskTitle}>Сходить в душ</div>
         <div className={s.date}>3 Feb</div> {/* первые 3 буквы показывать */}

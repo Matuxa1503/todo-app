@@ -10,5 +10,9 @@ export const CalendarTask: FC = () => {
   const [value, setValue] = useState<Value>(new Date());
   console.log(value);
 
-  return <Calendar locale="en-UK" value={value} onChange={setValue} />;
+  return (
+    <div className="calendar-wrapper">
+      <Calendar locale="en-UK" value={value} onChange={setValue} />
+    </div>
+  );
 };
