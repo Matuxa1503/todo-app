@@ -4,16 +4,22 @@ import { FC } from 'react';
 import UnfulfilledTick from '@/assets/icons/unfulfilledTick.svg?react';
 import s from './Plate.module.scss';
 
-export const Plate: FC = () => {
+interface PlateProps {
+  title: string;
+  date: string;
+  time: string;
+}
+
+export const Plate: FC<PlateProps> = ({ title, date, time }) => {
   return (
     <div className={s.plate}>
       <div className={s.block}>
         <UnfulfilledTick width={30} height={30} />
-        <div className={s.taskTitle}>Сходить в душ</div>
+        <div className={s.taskTitle}>{title}</div>
       </div>
       <div className={s.block}>
-        <div className={s.date}>3 Feb</div> {/* первые 3 буквы показывать */}
-        <div className={s.time}>12:00</div>
+        <div className={s.date}>{date}</div>
+        <div className={s.time}>{time}</div>
       </div>
     </div>
   );
