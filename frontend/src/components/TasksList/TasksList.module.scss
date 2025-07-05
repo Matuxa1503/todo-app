@@ -1,18 +1,18 @@
 .blockTasks {
   width: 100%;
   background-color: #eeeeee;
-  padding: 15px 25px;
-  margin: 20px 0 0;
+  padding: 0.9rem 1.6rem;
+  margin: 1.3rem 0 0;
 
   .subtitle {
-    font-size: 35px;
+    font-size: 2.2rem;
     font-weight: 500;
-    margin: 20px 0;
+    margin: 1.3rem 0;
   }
 
   .blockPlates {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 1.3rem;
   }
 }

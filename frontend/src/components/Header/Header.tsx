@@ -3,11 +3,11 @@ import { NotebookPen } from 'lucide-react';
 import s from './Header.module.scss';
 
 interface HeaderProps {
-  active: 'left' | 'right';
-  isActive: (val: 'left' | 'right') => void;
+  activePage: 'left' | 'right';
+  isActivePage: (val: 'left' | 'right') => void;
 }
 
-export const Header: FC<HeaderProps> = ({ active, isActive }) => {
+export const Header: FC<HeaderProps> = ({ activePage, isActivePage }) => {
   return (
     <div className={s.header}>
       <div className={s.blockTitle}>
@@ -15,10 +15,10 @@ export const Header: FC<HeaderProps> = ({ active, isActive }) => {
         <h1 className={s.title}>Todo Tasks</h1>
       </div>
       <div className={s.blockBtn}>
-        <button onClick={() => isActive('left')} className={`${s.btn} ${active === 'left' && s.active}`}>
+        <button onClick={() => isActivePage('left')} className={`${s.btn} ${activePage === 'left' && s.active}`}>
           Monthly
         </button>
-        <button onClick={() => isActive('right')} className={`${s.btn} ${active === 'right' && s.active}`}>
+        <button onClick={() => isActivePage('right')} className={`${s.btn} ${activePage === 'right' && s.active}`}>
           Daily
         </button>
       </div>

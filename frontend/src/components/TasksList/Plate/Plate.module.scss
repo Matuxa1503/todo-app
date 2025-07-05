@@ -3,17 +3,17 @@
   align-items: center;
   justify-content: space-around;
   background-color: #fff;
-  padding: 10px 25px;
-  border-radius: 15px;
+  padding: 0.6rem 1.6rem;
+  border-radius: 0.9rem;
 
   .taskTitle {
-    width: 200px;
+    width: 12.5rem;
     font-weight: 700;
   }
 
   .block {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 0.9rem;
   }
 }
