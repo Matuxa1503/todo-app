@@ -1,14 +1,19 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import Calendar from 'react-calendar';
+import { convertDate } from '../../utils/convertDate';
+import { Value } from '../../types/calendar';
 import './CalendarTask.scss';
+interface CalendarTaskProps {
+  setDate: (date: string | undefined) => void;
+}
 
-type ValuePiece = Date | null;
-
-type Value = ValuePiece | [ValuePiece, ValuePiece];
-
-export const CalendarTask: FC = () => {
+export const CalendarTask: FC<CalendarTaskProps> = ({ setDate }) => {
   const [value, setValue] = useState<Value>(new Date());
-  console.log(value);
+
+  useEffect(() => {
+    const date = convertDate(value);
+    setDate(date);
+  }, [value, setDate]);
 
   return (
     <div className="calendar-wrapper">
