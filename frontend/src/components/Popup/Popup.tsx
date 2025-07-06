@@ -10,7 +10,11 @@ interface PopupProps {
 }
 
 export const Popup: FC<PopupProps> = ({ date, setShowPopup }) => {
-  const { register, handleSubmit } = useForm<IFormInputTask>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IFormInputTask>();
   const onSubmit: SubmitHandler<IFormInputTask> = (data) => console.log(data);
 
   useEffect(() => {
@@ -37,14 +41,20 @@ export const Popup: FC<PopupProps> = ({ date, setShowPopup }) => {
       <X strokeWidth={3.5} color="#6969d4" size={32} className={s.cross} onClick={setShowPopup} />
       <h1 className={s.date}>{date}</h1>
 
-      <form className={s.inputWrapper} onSubmit={handleSubmit(onSubmit)}>
-        <div className={s.inputBlock}>
-          <p className={s.inputName}>Write time</p>
-          <input type="time" {...register('time')} />
+      <form className={s.formWrapper} onSubmit={handleSubmit(onSubmit)}>
+        <div className={s.inputWrapper}>
+          <p className={s.inputName}>Time</p>
+          <div className={s.inputBlock}>
+            <input type="time" {...register('time', { required: 'Time is required' })} />
+            {errors.time && <p className={s.error}>{errors.time.message}</p>}
+          </div>
         </div>
-        <div className={s.inputBlock}>
-          <p className={s.inputName}>Write text task</p>
-          <input placeholder="Go to shop" type="text" {...(register('task'), { required: true })} />
+        <div className={s.inputWrapper}>
+          <p className={s.inputName}>Task</p>
+          <div className={s.inputBlock}>
+            <input placeholder="Go to shop" type="text" {...register('task', { required: 'Name task is required' })} />
+            {errors.task && <p className={s.error}>{errors.task.message}</p>}
+          </div>
         </div>
         <div className={s.btnBlock}>
           <button type="submit">Add</button>

@@ -26,16 +26,28 @@
     color: rgb(105, 105, 212);
   }
 
-  .inputWrapper {
+  .formWrapper {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 2.3rem;
 
     .inputName {
       font-size: 2rem;
       color: rgb(105, 105, 212);
       font-weight: 700;
       margin-bottom: 0.5rem;
+    }
+
+    .inputBlock {
+      position: relative;
+
+      .error {
+        position: absolute;
+        top: 105%;
+        left: 0;
+        font-size: 1rem;
+        color: red;
+      }
     }
 
     input {
