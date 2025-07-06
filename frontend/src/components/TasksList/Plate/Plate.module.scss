@@ -5,15 +5,23 @@
   background-color: #fff;
   padding: 0.6rem 1.6rem;
   border-radius: 0.9rem;
-
-  .taskTitle {
-    width: 12.5rem;
-    font-weight: 700;
-  }
+  font-weight: 700;
 
   .block {
     display: flex;
     align-items: center;
     gap: 0.9rem;
+
+    .unfulfilledTick {
+      cursor: pointer;
+    }
+
+    .taskTitle {
+      width: 12.5rem;
+    }
+
+    .date {
+      color: rgb(105, 105, 212);
+    }
   }
 }

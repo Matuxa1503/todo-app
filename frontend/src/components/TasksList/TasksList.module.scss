@@ -14,5 +14,11 @@
     display: flex;
     flex-direction: column;
     gap: 1.3rem;
+
+    .plug {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: rgb(105, 105, 212);
+    }
   }
 }

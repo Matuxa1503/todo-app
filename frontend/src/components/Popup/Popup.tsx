@@ -3,6 +3,8 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { IFormInputTask } from '../../interfaces/IFormInputTask';
 import s from './Popup.module.scss';
 import { X } from 'lucide-react';
+import { useAppDispatch } from '../../hooks/redux';
+import { addTask } from '../../../store/reducers/TasksSlice';
 
 interface PopupProps {
   date: string | undefined;
@@ -10,12 +12,23 @@ interface PopupProps {
 }
 
 export const Popup: FC<PopupProps> = ({ date, setShowPopup }) => {
+  const dispatch = useAppDispatch();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<IFormInputTask>();
-  const onSubmit: SubmitHandler<IFormInputTask> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<IFormInputTask> = (data) => sendData(data);
+
+  const sendData = (data: IFormInputTask) => {
+    const obj = {
+      ...data,
+      date,
+      isCompleted: false,
+    };
+    dispatch(addTask(obj));
+    setShowPopup();
+  };
 
   useEffect(() => {
     const blackout = document.getElementById('blackout');

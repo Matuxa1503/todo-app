@@ -14,7 +14,7 @@ export const Plate: FC<PlateProps> = ({ title, date, time }) => {
   return (
     <div className={s.plate}>
       <div className={s.block}>
-        <UnfulfilledTick width={30} height={30} />
+        <UnfulfilledTick className={s.unfulfilledTick} width={30} height={30} />
         <div className={s.taskTitle}>{title}</div>
       </div>
       <div className={s.block}>
