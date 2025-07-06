@@ -11,7 +11,8 @@ export const TasksContainer: FC = () => {
 
   return (
     <div className={s.wrapper}>
-      <div className={s.content}>
+      <div className={s.content} id="content">
+        <div className={s.blackout} id="blackout"></div>
         <Header activePage={activePage} isActivePage={isActivePage} />
 
         <AnimatePresence mode="wait">
