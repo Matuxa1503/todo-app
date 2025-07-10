@@ -26,6 +26,7 @@ input,
 button,
 textarea {
   font-family: inherit;
+  background: none;
 }
 
 button {

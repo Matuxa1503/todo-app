@@ -22,7 +22,7 @@
   .blackout {
     display: none;
     position: absolute;
-    z-index: 20;
+    z-index: 1000;
     width: inherit;
     height: 1000%;
     backdrop-filter: blur(0.2rem);

@@ -1,19 +1,26 @@
 .plate {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-around;
   background-color: #fff;
+  overflow: hidden;
   padding: 0.6rem 1.6rem;
   border-radius: 0.9rem;
   font-weight: 700;
+  height: auto;
 
   .block {
     display: flex;
     align-items: center;
-    gap: 0.9rem;
+    gap: 1rem;
 
     .unfulfilledTick {
       cursor: pointer;
+    }
+
+    .fulfilledTick {
+      filter: drop-shadow(0px 0px 0.4rem #39c4a5);
     }
 
     .taskTitle {
@@ -23,5 +30,43 @@
     .date {
       color: rgb(105, 105, 212);
     }
+  }
+
+  .exitBlock {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    z-index: 15;
+    width: 36%;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #cacaca;
+    border-radius: inherit;
+    transform: translate(105%, -50%);
+    transition: transform 0.4s ease;
+
+    .exitBtn {
+      width: 50%;
+      height: 100%;
+    }
+
+    .trashBtn {
+      background: #ff5c5c;
+      box-shadow: 0px 0px 0.625rem #ff5c5c;
+    }
+
+    .editBtn {
+      border-top-left-radius: 0.9rem;
+      border-bottom-left-radius: 0.9rem;
+      background: #f8ce58;
+      box-shadow: 0px 0px 0.625rem #f8ce58;
+    }
+  }
+
+  &:hover .exitBlock {
+    transform: translate(0, -50%);
+    pointer-events: auto;
   }
 }
