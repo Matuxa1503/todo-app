@@ -7,7 +7,7 @@ import { useAppDispatch } from '../../hooks/redux';
 import { addTask } from '../../../store/reducers/TasksSlice';
 
 interface PopupProps {
-  date: string | undefined;
+  date: string;
   setShowPopup: () => void;
 }
 
@@ -25,6 +25,7 @@ export const Popup: FC<PopupProps> = ({ date, setShowPopup }) => {
       ...data,
       date,
       isCompleted: false,
+      id: Date.now(),
     };
     dispatch(addTask(obj));
     setShowPopup();

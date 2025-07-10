@@ -1,4 +1,3 @@
-import { IFormInputTask } from '../../src/interfaces/IFormInputTask';
 import { ITask } from './../../src/interfaces/ITask';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
@@ -9,9 +8,9 @@ interface TasksState {
 
 const initialState: TasksState = {
   tasks: [
-    { task: 'Сходить в душ и погулять с собакой Рекс', date: '12 Feb', time: '12:00', isCompleted: false },
-    { task: 'Сходить в магазин', date: '03 Feb', time: '12:00', isCompleted: false },
-    { task: 'Купить машину на барахолке у местного чувака', date: '25 Feb', time: '19:00', isCompleted: false },
+    { id: Date.now(), task: 'Сходить в душ и погулять с собакой Рекс', date: '12 Feb', time: '12:00', isCompleted: false },
+    { id: Date.now() + 1, task: 'Сходить в магазин', date: '03 Feb', time: '12:00', isCompleted: false },
+    { id: Date.now() + 2, task: 'Купить машину на барахолке у местного чувака', date: '25 Feb', time: '19:00', isCompleted: false },
   ],
 };
 
