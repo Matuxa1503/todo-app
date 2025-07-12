@@ -21,8 +21,14 @@ export const TasksSlice = createSlice({
     addTask(state, action: PayloadAction<ITask>) {
       state.tasks.push(action.payload);
     },
+    completedTask(state, action: PayloadAction<{ id: number; isCompleted: boolean }>) {
+      const task = state.tasks.find((item) => item.id === action.payload.id);
+      if (task) {
+        task.isCompleted = !task.isCompleted;
+      }
+    },
   },
 });
 
-export const { addTask } = TasksSlice.actions;
+export const { addTask, completedTask } = TasksSlice.actions;
 export default TasksSlice.reducer;

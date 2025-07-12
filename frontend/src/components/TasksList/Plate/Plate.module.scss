@@ -15,7 +15,7 @@
     align-items: center;
     gap: 1rem;
 
-    .unfulfilledTick {
+    .tick {
       cursor: pointer;
     }
 
@@ -24,11 +24,20 @@
     }
 
     .taskTitle {
+      user-select: none;
       width: 12.5rem;
+    }
+
+    .taskTitleCross {
+      color: rgb(191, 191, 191);
     }
 
     .date {
       color: rgb(105, 105, 212);
+    }
+
+    .blockDateCross {
+      color: rgb(191, 191, 191);
     }
   }
 

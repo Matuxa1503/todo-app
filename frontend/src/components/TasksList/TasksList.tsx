@@ -11,7 +11,7 @@ export const TasksList: FC = () => {
       <h2 className={s.subtitle}>This month</h2>
       <div className={s.blockPlates}>
         {tasks && tasks.length === 0 && <p className={s.plug}>No tasks</p>}
-        {tasks && tasks.length > 0 && tasks.map((item, ind) => <Plate key={ind} title={item.task} date={item.date} time={item.time} />)}
+        {tasks && tasks.length > 0 && tasks.map((item) => <Plate key={item.id} task={item} />)}
       </div>
     </div>
   );
