@@ -59,14 +59,19 @@ export const Popup: FC<PopupProps> = ({ date, setShowPopup }) => {
         <div className={s.inputWrapper}>
           <p className={s.inputName}>Time</p>
           <div className={s.inputBlock}>
-            <input type="time" {...register('time', { required: 'Time is required' })} />
+            <input className={errors.time && s.borderError} type="time" {...register('time', { required: 'Time is required' })} />
             {errors.time && <p className={s.error}>{errors.time.message}</p>}
           </div>
         </div>
         <div className={s.inputWrapper}>
           <p className={s.inputName}>Task</p>
           <div className={s.inputBlock}>
-            <input placeholder="Go to shop" type="text" {...register('task', { required: 'Name task is required' })} />
+            <input
+              className={errors.task && s.borderError}
+              placeholder="Go to shop"
+              type="text"
+              {...register('task', { required: 'Name task is required' })}
+            />
             {errors.task && <p className={s.error}>{errors.task.message}</p>}
           </div>
         </div>

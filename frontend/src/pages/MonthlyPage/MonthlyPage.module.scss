@@ -11,4 +11,9 @@
   cursor: pointer;
   background-color: rgb(105, 105, 212);
   box-shadow: 0 0 1rem rgb(105, 105, 212);
+  transition: all 0.5s;
+
+  &:hover {
+    scale: 0.9;
+  }
 }

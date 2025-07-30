@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { Header } from '../Header/Header';
 import { AnimatePresence } from 'framer-motion';
-import { Animation } from './Animation';
+import { Animation } from '../Animation';
 import { MonthlyPage } from '../../pages/MonthlyPage/MonthlyPage';
 import { DailyPage } from '../../pages/DailyPage/DailyPage';
 import s from './TasksContainer.module.scss';
@@ -14,15 +14,13 @@ export const TasksContainer: FC = () => {
     <div className={s.wrapper}>
       <div className={s.content} id="content">
         <div className={s.blackout} id="blackout"></div>
-        <Animation typeAnimation={animations.fadeIn}>
-          <Header activePage={activePage} isActivePage={isActivePage} />
+        <Header activePage={activePage} isActivePage={isActivePage} />
 
-          <AnimatePresence mode="wait">
-            <Animation typeAnimation={animations.shift} key={activePage} custom={activePage}>
-              {activePage === 'left' ? <MonthlyPage /> : <DailyPage />}
-            </Animation>
-          </AnimatePresence>
-        </Animation>
+        <AnimatePresence mode="wait" initial={false}>
+          <Animation typeAnimation={animations.shift} key={activePage} custom={activePage}>
+            {activePage === 'left' ? <MonthlyPage /> : <DailyPage />}
+          </Animation>
+        </AnimatePresence>
       </div>
     </div>
   );

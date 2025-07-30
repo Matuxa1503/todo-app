@@ -17,6 +17,11 @@
     top: 2%;
     right: 2%;
     cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      scale: 1.05;
+    }
   }
 
   .date {
@@ -47,6 +52,10 @@
         left: 0;
         font-size: 1rem;
         color: red;
+      }
+
+      & .borderError {
+        border-color: red;
       }
     }
 
@@ -100,6 +109,11 @@
         border-radius: 1.56rem;
         box-shadow: 0px 0px 0.625rem rgb(68, 68, 139);
         cursor: pointer;
+        transition: all 0.3s;
+
+        &:hover {
+          scale: 1.05;
+        }
       }
     }
   }

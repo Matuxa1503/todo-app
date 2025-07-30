@@ -26,7 +26,7 @@ export const Plate: FC<PlateProps> = ({ task }) => {
   };
 
   return (
-    <div className={s.plate}>
+    <div className={`${s.plate} ${task.isCompleted && s.scalePlate}`}>
       <div className={s.block}>
         <CircleCheckBig
           onClick={() => toggleIcon()}
@@ -45,10 +45,10 @@ export const Plate: FC<PlateProps> = ({ task }) => {
       {!task.isCompleted && (
         <div className={s.exitBlock}>
           <button className={`${s.exitBtn} ${s.editBtn}`}>
-            <Pencil color="#fff" size={27} />
+            <Pencil className={s.iconBtn} color="#fff" size={27} />
           </button>
           <button className={`${s.exitBtn} ${s.trashBtn}`}>
-            <Trash2 color="#fff" size={27} />
+            <Trash2 className={s.iconBtn} color="#fff" size={27} />
           </button>
         </div>
       )}
