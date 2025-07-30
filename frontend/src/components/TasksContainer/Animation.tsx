@@ -3,17 +3,13 @@ import { FC, ReactNode } from 'react';
 
 interface AnimationProps {
   children: ReactNode;
-  direction: 'left' | 'right';
+  typeAnimation: any;
+  custom?: any;
 }
 
-export const Animation: FC<AnimationProps> = ({ children, direction }) => {
+export const Animation: FC<AnimationProps> = ({ children, typeAnimation, custom }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, x: direction === 'left' ? -100 : 100 }}
-      transition={{ duration: 0.3 }}
-    >
+    <motion.div custom={custom} variants={typeAnimation} initial="initial" animate="animate" exit="exit">
       {children}
     </motion.div>
   );

@@ -5,6 +5,7 @@ import { Animation } from './Animation';
 import { MonthlyPage } from '../../pages/MonthlyPage/MonthlyPage';
 import { DailyPage } from '../../pages/DailyPage/DailyPage';
 import s from './TasksContainer.module.scss';
+import { animations } from '../../constants/animations';
 
 export const TasksContainer: FC = () => {
   const [activePage, isActivePage] = useState<'left' | 'right'>('left');
@@ -13,19 +14,15 @@ export const TasksContainer: FC = () => {
     <div className={s.wrapper}>
       <div className={s.content} id="content">
         <div className={s.blackout} id="blackout"></div>
-        <Header activePage={activePage} isActivePage={isActivePage} />
+        <Animation typeAnimation={animations.fadeIn}>
+          <Header activePage={activePage} isActivePage={isActivePage} />
 
-        <AnimatePresence mode="wait">
-          {activePage === 'left' ? (
-            <Animation key="left" direction={'left'}>
-              <MonthlyPage />
+          <AnimatePresence mode="wait">
+            <Animation typeAnimation={animations.shift} key={activePage} custom={activePage}>
+              {activePage === 'left' ? <MonthlyPage /> : <DailyPage />}
             </Animation>
-          ) : (
-            <Animation key="right" direction={'right'}>
-              <DailyPage />
-            </Animation>
-          )}
-        </AnimatePresence>
+          </AnimatePresence>
+        </Animation>
       </div>
     </div>
   );
