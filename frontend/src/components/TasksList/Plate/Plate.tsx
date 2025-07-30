@@ -3,7 +3,7 @@ import s from './Plate.module.scss';
 import { CircleCheckBig, Pencil, Trash2 } from 'lucide-react';
 import { ITask } from '../../../interfaces/ITask';
 import { useAppDispatch } from '../../../hooks/redux';
-import { completedTask } from '../../../../store/reducers/TasksSlice';
+import { completedTask, deletedTask } from '../../../../store/reducers/TasksSlice';
 
 interface PlateProps {
   task: ITask;
@@ -23,6 +23,10 @@ export const Plate: FC<PlateProps> = ({ task }) => {
     };
 
     dispatch(completedTask(data));
+  };
+
+  const handleDeleteTask = () => {
+    dispatch(deletedTask({ id: task.id }));
   };
 
   return (
@@ -47,7 +51,7 @@ export const Plate: FC<PlateProps> = ({ task }) => {
           <button className={`${s.exitBtn} ${s.editBtn}`}>
             <Pencil className={s.iconBtn} color="#fff" size={27} />
           </button>
-          <button className={`${s.exitBtn} ${s.trashBtn}`}>
+          <button onClick={() => handleDeleteTask()} className={`${s.exitBtn} ${s.trashBtn}`}>
             <Trash2 className={s.iconBtn} color="#fff" size={27} />
           </button>
         </div>
