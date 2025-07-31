@@ -1,84 +1,39 @@
-import { FC, useEffect } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { FC } from 'react';
 import { IFormInputTask } from '../../interfaces/IFormInputTask';
-import s from './Popup.module.scss';
-import { X } from 'lucide-react';
-import { useAppDispatch } from '../../hooks/redux';
-import { addTask } from '../../../store/reducers/TasksSlice';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { addTask, updatedTask } from '../../../store/reducers/TasksSlice';
+import { closePopup } from '../../../store/reducers/PopupSlice';
+import { TaskForm } from './TaskForm';
 
-interface PopupProps {
-  date: string;
-  setShowPopup: () => void;
-}
-
-export const Popup: FC<PopupProps> = ({ date, setShowPopup }) => {
+export const Popup: FC = () => {
+  const { isOpen, taskData, date, mode } = useAppSelector((state) => state.popupReducer);
   const dispatch = useAppDispatch();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<IFormInputTask>();
-  const onSubmit: SubmitHandler<IFormInputTask> = (data) => sendData(data);
 
   const sendData = (data: IFormInputTask) => {
-    const obj = {
-      ...data,
-      date,
-      isCompleted: false,
-      id: Date.now(),
-    };
-    dispatch(addTask(obj));
-    setShowPopup();
-  };
-
-  useEffect(() => {
-    const blackout = document.getElementById('blackout');
-    const content = document.getElementById('content');
-
-    if (blackout && content) {
-      blackout.style.display = 'block';
-      content.style.overflow = 'hidden';
-      document.body.style.overflow = 'hidden';
+    if (mode === 'create') {
+      const obj = {
+        ...data,
+        date,
+        isCompleted: false,
+        id: Date.now(),
+      };
+      dispatch(addTask(obj));
     }
 
-    return () => {
-      if (blackout && content) {
-        blackout.style.display = 'none';
-        content.style.overflow = 'auto';
-        document.body.style.overflow = 'auto';
-      }
-    };
-  }, []);
+    if (mode === 'edit' && taskData) {
+      const obj = {
+        ...data,
+        id: taskData.id,
+      };
+      dispatch(updatedTask(obj));
+    }
 
-  return (
-    <div className={s.container}>
-      <X strokeWidth={3.5} color="#6969d4" size={32} className={s.cross} onClick={setShowPopup} />
-      <h1 className={s.date}>{date}</h1>
+    dispatch(closePopup());
+  };
 
-      <form className={s.formWrapper} onSubmit={handleSubmit(onSubmit)}>
-        <div className={s.inputWrapper}>
-          <p className={s.inputName}>Time</p>
-          <div className={s.inputBlock}>
-            <input className={errors.time && s.borderError} type="time" {...register('time', { required: 'Time is required' })} />
-            {errors.time && <p className={s.error}>{errors.time.message}</p>}
-          </div>
-        </div>
-        <div className={s.inputWrapper}>
-          <p className={s.inputName}>Task</p>
-          <div className={s.inputBlock}>
-            <input
-              className={errors.task && s.borderError}
-              placeholder="Go to shop"
-              type="text"
-              {...register('task', { required: 'Name task is required' })}
-            />
-            {errors.task && <p className={s.error}>{errors.task.message}</p>}
-          </div>
-        </div>
-        <div className={s.btnBlock}>
-          <button type="submit">Add</button>
-        </div>
-      </form>
-    </div>
-  );
+  if (!isOpen) return null;
+
+  if (mode === 'create') return <TaskForm date={date} sendData={sendData} />;
+  if (mode === 'edit' && taskData !== null)
+    return <TaskForm date={taskData.date} defaultValues={{ time: taskData.time, task: taskData.title }} sendData={sendData} />;
 };

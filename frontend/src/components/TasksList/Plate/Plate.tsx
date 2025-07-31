@@ -4,6 +4,7 @@ import { CircleCheckBig, Pencil, Trash2 } from 'lucide-react';
 import { ITask } from '../../../interfaces/ITask';
 import { useAppDispatch } from '../../../hooks/redux';
 import { completedTask, deletedTask } from '../../../../store/reducers/TasksSlice';
+import { openPopupForEditTask } from '../../../../store/reducers/PopupSlice';
 
 interface PlateProps {
   task: ITask;
@@ -23,6 +24,17 @@ export const Plate: FC<PlateProps> = ({ task }) => {
     };
 
     dispatch(completedTask(data));
+  };
+
+  const handleUpdateTask = () => {
+    const data = {
+      id: task.id,
+      time: task.time,
+      title: task.task,
+      date: task.date,
+    };
+
+    dispatch(openPopupForEditTask(data));
   };
 
   const handleDeleteTask = () => {
@@ -48,7 +60,7 @@ export const Plate: FC<PlateProps> = ({ task }) => {
 
       {!task.isCompleted && (
         <div className={s.exitBlock}>
-          <button className={`${s.exitBtn} ${s.editBtn}`}>
+          <button onClick={() => handleUpdateTask()} className={`${s.exitBtn} ${s.editBtn}`}>
             <Pencil className={s.iconBtn} color="#fff" size={27} />
           </button>
           <button onClick={() => handleDeleteTask()} className={`${s.exitBtn} ${s.trashBtn}`}>

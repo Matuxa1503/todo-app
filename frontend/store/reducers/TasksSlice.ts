@@ -27,11 +27,19 @@ export const TasksSlice = createSlice({
         task.isCompleted = !task.isCompleted;
       }
     },
+    updatedTask(state, action: PayloadAction<{ id: number; time: string; task: string }>) {
+      const el = state.tasks.find((item) => item.id === action.payload.id);
+      console.log(el);
+      if (el) {
+        el.task = action.payload.task;
+        el.time = action.payload.time;
+      }
+    },
     deletedTask(state, action: PayloadAction<{ id: number }>) {
       state.tasks = state.tasks.filter((item) => item.id !== action.payload.id);
     },
   },
 });
 
-export const { addTask, completedTask, deletedTask } = TasksSlice.actions;
+export const { addTask, completedTask, updatedTask, deletedTask } = TasksSlice.actions;
 export default TasksSlice.reducer;

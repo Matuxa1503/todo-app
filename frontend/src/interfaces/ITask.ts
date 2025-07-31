@@ -5,3 +5,11 @@ export interface ITask {
   time: string;
   isCompleted: boolean;
 }
+
+// for update task
+export interface ITaskDataPopup {
+  id: number;
+  date: string;
+  time: string;
+  title: string;
+}
