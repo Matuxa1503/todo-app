@@ -3,8 +3,8 @@ import s from './Plate.module.scss';
 import { CircleCheckBig, Pencil, Trash2 } from 'lucide-react';
 import { ITask } from '../../../interfaces/ITask';
 import { useAppDispatch } from '../../../hooks/redux';
-import { completedTask, deletedTask } from '../../../../store/reducers/TasksSlice';
-import { openPopupForEditTask } from '../../../../store/reducers/PopupSlice';
+import { openPopupForEditTask } from '../../../store/reducers/PopupSlice';
+import { completedTask, deletedTask } from '../../../store/reducers/TasksSlice';
 
 interface PlateProps {
   task: ITask;

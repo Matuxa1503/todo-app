@@ -1,5 +1,5 @@
-import { ITask } from './../../src/interfaces/ITask';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { ITask } from '../../interfaces/ITask';
 
 interface TasksState {
   tasks: ITask[];

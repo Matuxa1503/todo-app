@@ -4,7 +4,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { IFormInputTask } from '../../interfaces/IFormInputTask';
 import s from './TaskForm.module.scss';
 import { useAppDispatch } from '../../hooks/redux';
-import { closePopup } from '../../../store/reducers/PopupSlice';
+import { closePopup } from '../../store/reducers/PopupSlice';
 
 interface TaskFormProps {
   date: string;

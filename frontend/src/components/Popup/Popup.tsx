@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { IFormInputTask } from '../../interfaces/IFormInputTask';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { addTask, updatedTask } from '../../../store/reducers/TasksSlice';
-import { closePopup } from '../../../store/reducers/PopupSlice';
 import { TaskForm } from './TaskForm';
+import { addTask, updatedTask } from '../../store/reducers/TasksSlice';
+import { closePopup } from '../../store/reducers/PopupSlice';
 
 export const Popup: FC = () => {
   const { isOpen, taskData, date, mode } = useAppSelector((state) => state.popupReducer);

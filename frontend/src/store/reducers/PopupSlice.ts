@@ -1,5 +1,5 @@
-import { ITaskDataPopup } from './../../src/interfaces/ITask';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { ITaskDataPopup } from '../../interfaces/ITask';
 
 interface PopupState {
   isOpen: boolean;
