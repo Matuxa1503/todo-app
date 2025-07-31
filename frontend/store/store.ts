@@ -1,8 +1,10 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import tasksReducer from './reducers/TasksSlice';
+import popupReducer from './reducers/PopupSlice';
 
 const rootReducer = combineReducers({
   tasksReducer,
+  popupReducer,
 });
 
 export const setupStore = () => {
