@@ -54,7 +54,7 @@ export const Plate: FC<PlateProps> = ({ task }) => {
       </div>
 
       <div className={s.block}>
-        <div className={`${s.date} ${task.isCompleted && s.blockDateCross}`}>{task.date.split('-')[0]}</div>
+        <div className={`${s.date} ${task.isCompleted && s.blockDateCross}`}>{`${task.date.day} ${task.date.month}`}</div>
         <div className={`${task.isCompleted && s.blockDateCross}`}>{task.time}</div>
       </div>
 

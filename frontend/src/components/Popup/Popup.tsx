@@ -10,7 +10,7 @@ export const Popup: FC = () => {
   const dispatch = useAppDispatch();
 
   const sendData = (data: IFormInputTask) => {
-    if (mode === 'create') {
+    if (mode === 'create' && date) {
       const obj = {
         ...data,
         date,

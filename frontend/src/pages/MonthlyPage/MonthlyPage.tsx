@@ -4,10 +4,11 @@ import s from './MonthlyPage.module.scss';
 import { TasksList } from '../../components/TasksList/TasksList';
 import { useAppDispatch } from '../../hooks/redux';
 import { openPopupForCreateTask } from '../../store/reducers/PopupSlice';
+import { IDate } from '../../interfaces/IDate';
 
 export const MonthlyPage: FC = () => {
   const dispatch = useAppDispatch();
-  const [date, setDate] = useState<string>('');
+  const [date, setDate] = useState<IDate | null>(null);
 
   return (
     <>

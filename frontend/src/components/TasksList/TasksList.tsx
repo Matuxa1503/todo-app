@@ -5,6 +5,7 @@ import { useAppSelector } from '../../hooks/redux';
 
 export const TasksList: FC = () => {
   const { tasks } = useAppSelector((state) => state.tasksReducer);
+  // const { month, year } = useAppSelector((state) => state.timeReducer);
 
   return (
     <div className={s.blockTasks}>

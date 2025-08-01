@@ -5,8 +5,9 @@ import { Value } from '../../types/calendar';
 import './CalendarTask.scss';
 import { useAppDispatch } from '../../hooks/redux';
 import { writeDate } from '../../store/reducers/TimeSlice';
+import { IDate } from '../../interfaces/IDate';
 interface CalendarTaskProps {
-  setDate: (date: string | undefined) => void;
+  setDate: (date: IDate) => void;
 }
 
 export const CalendarTask: FC<CalendarTaskProps> = ({ setDate }) => {
@@ -31,7 +32,9 @@ export const CalendarTask: FC<CalendarTaskProps> = ({ setDate }) => {
   useEffect(() => {
     // get date and write for 'add new Task'
     const date = convertDate(value);
-    setDate(date);
+    if (date) {
+      setDate(date);
+    }
   }, [value, setDate]);
 
   return (

@@ -5,9 +5,10 @@ import { IFormInputTask } from '../../interfaces/IFormInputTask';
 import s from './TaskForm.module.scss';
 import { useAppDispatch } from '../../hooks/redux';
 import { closePopup } from '../../store/reducers/PopupSlice';
+import { IDate } from '../../interfaces/IDate';
 
 interface TaskFormProps {
-  date: string;
+  date: IDate | null;
   defaultValues?: {
     time: string;
     task: string;
@@ -51,7 +52,7 @@ export const TaskForm: FC<TaskFormProps> = ({ date, defaultValues, sendData }) =
   return (
     <div className={s.container}>
       <X strokeWidth={3.5} color="#6969d4" size={32} className={s.cross} onClick={() => dispatch(closePopup())} />
-      <h1 className={s.date}>{date.split('-')[0]}</h1>
+      {date && <h1 className={s.date}>{`${date.day} ${date.month}`}</h1>}
 
       <form className={s.formWrapper} onSubmit={handleSubmit(onSubmit)}>
         <div className={s.inputWrapper}>
