@@ -51,7 +51,7 @@ export const TaskForm: FC<TaskFormProps> = ({ date, defaultValues, sendData }) =
   return (
     <div className={s.container}>
       <X strokeWidth={3.5} color="#6969d4" size={32} className={s.cross} onClick={() => dispatch(closePopup())} />
-      <h1 className={s.date}>{date}</h1>
+      <h1 className={s.date}>{date.split('-')[0]}</h1>
 
       <form className={s.formWrapper} onSubmit={handleSubmit(onSubmit)}>
         <div className={s.inputWrapper}>
