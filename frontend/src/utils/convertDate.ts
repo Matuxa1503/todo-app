@@ -10,3 +10,10 @@ export const convertDate = (date: Value): string | undefined => {
     return `${day} ${month}-${year}`;
   }
 };
+
+export const getMonthYear = (activeStartDate?: Date | null) => {
+  const now = activeStartDate ?? new Date();
+  const month = now.toLocaleString('en-US', { month: 'short' });
+  const year = now.getFullYear().toString();
+  return { month, year };
+};
