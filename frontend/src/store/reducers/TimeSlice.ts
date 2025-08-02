@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface TimeState {
-  year: string;
+  year: number | string;
   month: string;
 }
 

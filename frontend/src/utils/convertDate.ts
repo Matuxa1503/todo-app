@@ -14,6 +14,6 @@ export const convertDate = (date: Value) => {
 export const getMonthYear = (activeStartDate?: Date | null) => {
   const now = activeStartDate ?? new Date();
   const month = now.toLocaleString('en-US', { month: 'short' });
-  const year = now.getFullYear().toString();
+  const year = now.getFullYear();
   return { month, year };
 };

@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import s from './Plate.module.scss';
 import { CircleCheckBig, Pencil, Trash2 } from 'lucide-react';
 import { ITask } from '../../../interfaces/ITask';
@@ -12,10 +12,6 @@ interface PlateProps {
 
 export const Plate: FC<PlateProps> = ({ task }) => {
   const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    console.log(task);
-  }, [task]);
 
   const toggleIcon = () => {
     const data = {

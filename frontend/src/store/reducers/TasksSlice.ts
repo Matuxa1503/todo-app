@@ -8,6 +8,7 @@ interface TasksState {
 
 const initialState: TasksState = {
   tasks: [
+    { id: Date.now() + 1, task: 'Gогулять', date: { day: 6, month: 'Aug', year: 2025 }, time: '12:25', isCompleted: false },
     {
       id: Date.now(),
       task: 'Сходить в душ и погулять с собакой Рекс',
@@ -15,12 +16,12 @@ const initialState: TasksState = {
       time: '12:00',
       isCompleted: false,
     },
-    { id: Date.now() + 1, task: 'Gогулять', date: { day: 6, month: 'Aug', year: 2025 }, time: '12:25', isCompleted: false },
+    { id: Date.now() + 4, task: 'Eda', date: { day: 6, month: 'Aug', year: 2025 }, time: '9:25', isCompleted: false },
     { id: Date.now() + 2, task: 'Сходить в магазин', date: { day: 3, month: 'May', year: 2025 }, time: '8:43', isCompleted: false },
     {
       id: Date.now() + 3,
       task: 'Купить машину на барахолке у местного чувака',
-      date: { day: 11, month: 'Aug', year: 2025 },
+      date: { day: 11, month: 'Jul', year: 2025 },
       time: '19:00',
       isCompleted: false,
     },
