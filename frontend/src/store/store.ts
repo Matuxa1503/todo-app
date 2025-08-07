@@ -2,11 +2,13 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import tasksReducer from './reducers/TasksSlice';
 import popupReducer from './reducers/PopupSlice';
 import timeReducer from './reducers/TimeSlice';
+import userReducer from './reducers/UserSlice';
 
 const rootReducer = combineReducers({
   tasksReducer,
   popupReducer,
   timeReducer,
+  userReducer,
 });
 
 export const setupStore = () => {

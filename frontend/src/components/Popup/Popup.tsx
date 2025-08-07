@@ -2,11 +2,14 @@ import { FC } from 'react';
 import { IFormInputTask } from '../../interfaces/IFormInputTask';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { TaskForm } from './TaskForm';
-import { addTask, updatedTask } from '../../store/reducers/TasksSlice';
+import { updatedTask } from '../../store/reducers/TasksSlice';
 import { closePopup } from '../../store/reducers/PopupSlice';
+import { addTask } from '../../store/reducers/ActionCreators';
 
 export const Popup: FC = () => {
   const { isOpen, taskData, date, mode } = useAppSelector((state) => state.popupReducer);
+  const { uid } = useAppSelector((state) => state.userReducer);
+
   const dispatch = useAppDispatch();
 
   const sendData = (data: IFormInputTask) => {
@@ -15,9 +18,8 @@ export const Popup: FC = () => {
         ...data,
         date,
         isCompleted: false,
-        id: Date.now(),
       };
-      dispatch(addTask(obj));
+      dispatch(addTask({ uid, obj }));
     }
 
     if (mode === 'edit' && taskData) {

@@ -1,7 +1,7 @@
 import { IDate } from './IDate';
 
 export interface ITask {
-  id: number;
+  id?: string;
   task: string;
   date: IDate;
   time: string;
