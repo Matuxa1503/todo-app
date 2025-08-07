@@ -15,3 +15,8 @@ export interface ITaskDataPopup {
   time: string;
   title: string;
 }
+
+export interface ITaskDeleteArgs {
+  uid: string;
+  taskId: string;
+}

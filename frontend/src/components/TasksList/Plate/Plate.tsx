@@ -2,15 +2,17 @@ import { FC } from 'react';
 import s from './Plate.module.scss';
 import { CircleCheckBig, Pencil, Trash2 } from 'lucide-react';
 import { ITask } from '../../../interfaces/ITask';
-import { useAppDispatch } from '../../../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import { openPopupForEditTask } from '../../../store/reducers/PopupSlice';
-import { completedTask, deletedTask } from '../../../store/reducers/TasksSlice';
+import { completedTask } from '../../../store/reducers/TasksSlice';
+import { deleteTask } from '../../../store/reducers/ActionCreators';
 
 interface PlateProps {
   task: ITask;
 }
 
 export const Plate: FC<PlateProps> = ({ task }) => {
+  const { uid } = useAppSelector((state) => state.userReducer);
   const dispatch = useAppDispatch();
 
   const toggleIcon = () => {
@@ -34,7 +36,7 @@ export const Plate: FC<PlateProps> = ({ task }) => {
   };
 
   const handleDeleteTask = () => {
-    dispatch(deletedTask({ id: task.id }));
+    if (task.id) dispatch(deleteTask({ uid, taskId: task.id }));
   };
 
   return (

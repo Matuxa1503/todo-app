@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ITask } from '../../interfaces/ITask';
-import { addTask, fetchTasks } from './ActionCreators';
+import { addTask, deleteTask, fetchTasks } from './ActionCreators';
 
 interface TasksState {
   tasks: ITask[];
@@ -51,9 +51,6 @@ export const TasksSlice = createSlice({
         el.time = action.payload.time;
       }
     },
-    deletedTask(state, action: PayloadAction<{ id: string }>) {
-      state.tasks = state.tasks.filter((item) => item.id !== action.payload.id);
-    },
   },
   extraReducers: (builder) => {
     builder
@@ -81,9 +78,20 @@ export const TasksSlice = createSlice({
       .addCase(addTask.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = action.error.message || 'Ошибка при загрузке данных';
+      })
+
+      .addCase(deleteTask.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteTask.fulfilled, (state, action: PayloadAction<{ taskId: string }>) => {
+        state.tasks = state.tasks.filter((item) => item.id !== action.payload.taskId);
+      })
+      .addCase(deleteTask.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = action.error.message || 'Ошибка при загрузке данных';
       });
   },
 });
 
-export const { completedTask, updatedTask, deletedTask } = TasksSlice.actions;
+export const { completedTask, updatedTask } = TasksSlice.actions;
 export default TasksSlice.reducer;
